@@ -6,6 +6,7 @@ import { Title } from './components/Title/Title';
 import { TodoInput } from './components/TodoInput/Todoinput';
 import { TodoList } from './components/TodoList/TodoList';
 import { Todo } from './components/Todo/Todo';
+import { TodoFilters } from './components/TodoFilters/TodoFilters';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <TodoList>
         <Todo />
       </TodoList>
+      <TodoFilters />
     </div>
   );
 }
