@@ -1,4 +1,5 @@
 import React from 'react';
+import close from "./close-icon.svg"
 
 const Todo = () => {
   return (
@@ -9,6 +10,7 @@ const Todo = () => {
           Todo Item
           </p>
       </div>
+        <img src={close} alt="Close-icon" className="h-5 w-5 cursor-pointer transition-all duration-300 ease-in"/>
     </div>
   );
 };
