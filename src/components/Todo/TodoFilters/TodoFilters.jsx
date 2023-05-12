@@ -1,10 +1,24 @@
 import React from 'react';
-import { FiltersContainer } from "./TodoFilters.components"
+import {
+  FiltersContainer,
+  ItemsLeft,
+  FilterButtonContainer,
+  FilterButton,
+} from './TodoFilters.components';
 
 const TodoFilters = () => {
   return (
-    <FiltersContainer> 
+    <FiltersContainer>
+      <ItemsLeft />
+      <FilterButtonContainer>
+        <FilterButton action={() => {}} active="All" filter="All" />
+        <FilterButton action={() => {}} active="All" filter="Active" />
+        <FilterButton action={() => {}} active="All" filter="Completed" />
+      </FilterButtonContainer>
 
+      <button className="text-gray-400 hover:text-white cursor-pointer transition-all duration-300">
+        Clear Completed
+      </button>
     </FiltersContainer>
   );
 };
