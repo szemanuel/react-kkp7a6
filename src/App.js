@@ -13,6 +13,9 @@ export default function App() {
     <div>
       <Title />
       <TodoInput />
+      <TodoList>
+        <h2>Hola</h2>
+      </TodoList>
     </div>
   );
 }
