@@ -22,7 +22,22 @@ export default function App() {
   completed: false
 }
   ]);
-  
+
+const addTodo = (title) => {
+const lastId = todos.length > 0 ? todos[todos.length-1].id :1;
+
+const newTodo = {
+  id: lastId + 1,
+  title,
+  completed: false
+}
+
+const todoList = [...todos]
+todoList.push(newTodo);
+setTodos(todoList); 
+}
+
+
   return (
     <div>
       <Title />
