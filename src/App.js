@@ -19,15 +19,15 @@ export default function App() {
 {
   id: 2,
   title: "Record the next video",
-  completed: false,
-},
-  ])
+  completed: false
+}
+  ]);
+  
   return (
     <div>
       <Title />
       <TodoInput />
       <TodoList todos={todos} />
-      <Todo />
       <TodoFilters />
     </div>
   );
