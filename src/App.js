@@ -26,9 +26,8 @@ export default function App() {
     <div>
       <Title />
       <TodoInput />
-      <TodoList>
-        <Todo />
-      </TodoList>
+      <TodoList todos={todos} />
+      <Todo />
       <TodoFilters />
     </div>
   );
