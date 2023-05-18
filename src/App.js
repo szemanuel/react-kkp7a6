@@ -41,7 +41,7 @@ setTodos(todoList);
   return (
     <div>
       <Title />
-      <TodoInput />
+      <TodoInput addTodo={addTodo} />
       <TodoList todos={todos} />
       <TodoFilters />
     </div>

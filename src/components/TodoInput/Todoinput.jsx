@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const TodoInput = () => {
+const TodoInput = ({ addTodd }) => {
+  const [title, setTitle] = useState('');
+
+  //Hacemos que se capture el evento cuando apriete enter y lo llamamos cuando hacemos onKeyDown
+  const handleTodo = (e) => {
+    if (e.key.toLowerCase() === 'enter') {
+      addTodo(title);
+      setTitle('');
+    }
+  };
+
   return (
     <div className="mt-6 relative">
       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -8,10 +18,14 @@ const TodoInput = () => {
           {' '}
         </span>
       </div>
-      <input 
-      type="text"
-      placeholder="What next..."
-      className="focus:shadow-lg font-inter focus:shadow-blue-800 pl-12 w-full py-4 rounded-x1"
+      <input
+        type="text"
+        placeholder="What next..."
+        className="focus:shadow-lg font-inter focus:shadow-blue-800 pl-12 w-full py-4 rounded-x1"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        onKeyDown={(e) => handleTodo(e) }
+        
       />
     </div>
   );
