@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const TodoInput = ({ addTodd }) => {
+const TodoInput = ({ addTodo }) => {
   const [title, setTitle] = useState('');
 
   //Hacemos que se capture el evento cuando apriete enter y lo llamamos cuando hacemos onKeyDown
@@ -24,6 +24,7 @@ const TodoInput = ({ addTodd }) => {
         className="focus:shadow-lg font-inter focus:shadow-blue-800 pl-12 w-full py-4 rounded-x1"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        //Con la siguiente función vemos que finalmente agrega al listado lo que ponemos en el input
         onKeyDown={(e) => handleTodo(e) }
         
       />
