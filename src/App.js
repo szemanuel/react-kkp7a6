@@ -48,11 +48,22 @@ export default function App() {
     setTodos(updatedList);
   };
 
+  //Volvemos a la App.js y creamos la función handleDelete que va a recibir un id y nuevamente creamos la updatedList que va a ser igual a los todos filtrados siempre que el id no corresponda al seleccionado, es decir, filtramos todos los “Todo” que no tenga este id y esos son los que vamos a actualizar con  setTodos(updatedList);
+
+  const handleDelete = (id) => {
+    const updatedList = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedList);
+  };
+
   return (
     <div>
       <Title />
       <TodoInput addTodo={addTodo} />
-      <TodoList todos={todos} handleSetComplete={handleSetComplete} />
+      <TodoList 
+      todos={todos} 
+      handleSetComplete={handleSetComplete} 
+      handleDelete={handleDelete}
+      />
       <TodoFilters />
     </div>
   );

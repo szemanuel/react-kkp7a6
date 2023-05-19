@@ -2,7 +2,7 @@ import React from 'react';
 import close from './close-icon.svg';
 import check from './check-icon.svg';
 
-const Todo = ({ todo, handleSetComplete }) => {
+const Todo = ({ todo, handleSetComplete, handleDelete }) => {
   const { title, completed, id } = todo;
 
   return (
@@ -30,6 +30,7 @@ const Todo = ({ todo, handleSetComplete }) => {
         <p className={'pl-3' + (completed && 'line-througt')}>{title}</p>
       </div>
       <img
+        onClick={() => handleDelete(id)}
         src={close}
         alt="Close-icon"
         className="h-5 w-5 cursor-pointer transition-all duration-300 ease-in"
