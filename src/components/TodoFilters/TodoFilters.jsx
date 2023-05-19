@@ -6,17 +6,24 @@ import {
   FilterButton,
 } from './TodoFilters.components';
 
-const TodoFilters = () => {
+const TodoFilters = ({
+  total,
+  activeFilter,
+  showAllTodos,
+  showActiveTodos,
+  showCompletedTodos,
+  handleClearComplete
+}) => {
   return (
     <FiltersContainer>
-      <ItemsLeft />
+      <ItemsLeft  total={total}/>
       <FilterButtonContainer>
-        <FilterButton action={() => {}} active="All" filter="All" />
-        <FilterButton action={() => {}} active="All" filter="Active" />
-        <FilterButton action={() => {}} active="All" filter="Completed" />
+        <FilterButton action={() => {}} active={activeFilter} filter="All" />
+        <FilterButton action={() => {}} active={activeFilter} filter="Active" />
+        <FilterButton action={() => {}} active={activeFilter} filter="Completed" />
       </FilterButtonContainer>
 
-      <button className="text-gray-400 hover:text-white cursor-pointer transition-all duration-300">
+      <button  onClick={() => handleClearComplete} className="text-gray-400 hover:text-white cursor-pointer transition-all duration-300">
         Clear Completed
       </button>
     </FiltersContainer>

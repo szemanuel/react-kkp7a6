@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
 import styles from './tailwind.css';
 import 'tailwindcss/tailwind.css';
@@ -84,12 +84,24 @@ export default function App() {
     setActiveFilter(updatedList);
   };
 
+  useEffect(() => {
+    if (activeFilter === 'all') {
+      setFilteredTodos(todos);
+    } else if (activeFilter === 'active') {
+      const activeTodos = todos.filter((todo) => todo.completed === false);
+      setFilteredTodos(activeTodos);
+    } else if (activeFilter === 'completed') {
+      const completedTodos = todos.filter((todo) => todo.completed === true);
+      setFilteredTodos(completededTodos)
+    }
+  });
+
   return (
     <div>
       <Title />
       <TodoInput addTodo={addTodo} />
       <TodoList
-        todos={todos}
+        todos={filteredTodos} //ponemos el filteredTodos porque a partir de ahora tenemos el filtrado.
         handleSetComplete={handleSetComplete}
         handleDelete={handleDelete}
         showAllTodos={showAllTodos}
