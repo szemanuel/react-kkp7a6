@@ -55,14 +55,47 @@ export default function App() {
     setTodos(updatedList);
   };
 
+  //ahora vamos a trabajar con la sección de los filtros. Para eso hay que crear dos estados nuevos
+
+  //Por defectto recibe el "all"
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  //Por defecto tiene una copia de "todos"
+  const [filteredTodos, setFilteredTodos] = useState(todos);
+
+  //Ahora vamos a necesitar cuatro nueva funciones. La primera es la de mostrar todos los “todos”:
+  const showAllTodos = () => {
+    setActiveFilter('all');
+  };
+
+  // Muestra los activos
+  const showActiveTodos = () => {
+    setActiveFilter('active');
+  };
+
+  //Otro que muestre los “todos” completados.
+  const showCompletedTodos = () => {
+    setActiveFilter('completed');
+  };
+
+  //Una última función que elimine los “todos” que fueron completados.
+  const handleClearComplete = () => {
+    const updatedList = todos.filter((todo) => !todo.completed);
+    setActiveFilter(updatedList);
+  };
+
   return (
     <div>
       <Title />
       <TodoInput addTodo={addTodo} />
-      <TodoList 
-      todos={todos} 
-      handleSetComplete={handleSetComplete} 
-      handleDelete={handleDelete}
+      <TodoList
+        todos={todos}
+        handleSetComplete={handleSetComplete}
+        handleDelete={handleDelete}
+        showAllTodos={showAllTodos}
+        showActiveTodos={showActiveTodos}
+        showCompletedTodos={showCompletedTodos}
+        handleClearComplete={handleClearComplete}
       />
       <TodoFilters />
     </div>
