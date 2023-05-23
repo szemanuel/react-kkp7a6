@@ -9,18 +9,8 @@ import { Todo } from './components/Todo/Todo';
 import { TodoFilters } from './components/TodoFilters/TodoFilters';
 
 export default function App() {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: 'Watch marvel movie',
-      completed: false,
-    },
-    {
-      id: 2,
-      title: 'Record the next video',
-      completed: false,
-    },
-  ]);
+  const [todos, setTodos] = useState([])
+    
 
   const addTodo = (title) => {
     const lastId = todos.length > 0 ? todos[todos.length - 1].id : 1;
@@ -84,6 +74,8 @@ export default function App() {
     setActiveFilter(updatedList);
   };
 
+//A su vez, vamos a añadir un useEffect y ponemos que monitoree las dependencia “activeFilter” y “todos” y agregamos un condicional. Ese condicional ocurre cada vez que cambia la dependencia (que en definitiva es si cambia el filtro)
+
   useEffect(() => {
     if (activeFilter === 'all') {
       setFilteredTodos(todos);
@@ -94,7 +86,7 @@ export default function App() {
       const completedTodos = todos.filter((todo) => todo.completed === true);
       setFilteredTodos(completededTodos)
     }
-  });
+  }, [activeFilter, todos]);
 
   return (
     <div>
@@ -102,6 +94,7 @@ export default function App() {
       <TodoInput addTodo={addTodo} />
       <TodoList
         todos={filteredTodos} //ponemos el filteredTodos porque a partir de ahora tenemos el filtrado.
+        activeFilter={activeFilter}
         handleSetComplete={handleSetComplete}
         handleDelete={handleDelete}
         showAllTodos={showAllTodos}
@@ -109,7 +102,6 @@ export default function App() {
         showCompletedTodos={showCompletedTodos}
         handleClearComplete={handleClearComplete}
       />
-      <TodoFilters />
     </div>
   );
 }

@@ -6,7 +6,7 @@ const TodoList = ({
   todos,
   handleSetComplete,
   handleDelete,
-  activeFilters,
+  activeFilter,
   showAllTodos,
   showActiveTodos,
   showCompletedTodos,
@@ -25,7 +25,7 @@ const TodoList = ({
         );
       })}
       <TodoFilters 
-      activeFilters={activeFilters}
+      activeFilter={activeFilter}
       total={todos.length}
       showAllTodos={showAllTodos}
       showActiveTodos={showActiveTodos}
